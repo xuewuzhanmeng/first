@@ -1,0 +1,391 @@
+*{
+  font-family: "lucida grande","lucida sans unicode", lucida, helvetica, "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", Verdana, Arial, sans-serif;
+}
+
+html{
+  font-size: 80px;
+}
+body {
+  font-size: 0.16rem;
+}
+@media screen and (min-width: 375px) {
+  html{
+    font-size: 100px;
+  }
+  body{
+    font-size: 0.16rem;
+  }
+}
+.page{
+  width: 100%;
+  height: 80vh;
+  overflow: auto;
+  position: relative;
+  padding-bottom: 20vh;
+}
+.top{
+  width: 100%;
+  height: 91px;
+  position: fixed;
+  z-index: 10;
+}
+header{
+  height: 50px;
+  background: url("../images/bg-news.png") no-repeat center #3e98f0;
+  background-size: 16vw;
+  position: relative;
+  border-bottom: 1px solid #5dabf0;
+}
+header a{
+  height: 50px;
+  display: inline-block;
+  margin-left: 10px;
+}
+header a span{
+  width: 40px;
+  height: 34px;
+  display: inline-block;
+  background: url("../images/icon-bg.png") no-repeat;
+  background-size: 40px;
+  margin-top: 8px;
+}
+header a:nth-child(1) span{
+  background-position: 0 0;
+
+}
+header a:nth-child(2) span{
+  background-position: 0 -467px;
+}
+header a:nth-child(3) span{
+  background-position: 0 -167px;
+}
+header a:nth-child(4) span{
+  background-position: 0 -112px;
+}
+header a:nth-child(3){
+  position: absolute;
+  right: 53px;
+}
+header a:nth-child(4){
+  position: absolute;
+  right: 3px;
+}
+nav{
+  position: relative;
+}
+nav a{
+  color: #cce7fd;
+  text-decoration: none;
+}
+nav .main_nav{
+  background-color: #3e98f0;
+  height: 40px;
+  overflow: hidden;
+  position: relative;
+}
+nav .main_nav ul{
+  width: 85vw;
+  height: 70px;
+  list-style: none;
+  margin: 0 0 0 16px;
+  padding: 0;
+  display: inline-block;
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space:nowrap;
+  position: relative;
+}
+nav .main_nav li{
+  height: 40px;
+  display: inline-block;
+  line-height:40px;
+  margin: 0 16px;
+}
+nav .main_nav li a{
+  height: 38px;
+  padding: 0 4px;
+  border-bottom: 2px solid transparent;
+  display: inline-block;
+}
+nav .main_nav li:first-child{
+  margin: 0 16px 0 0;
+}
+nav .main_nav li:first-child a{
+  border-bottom: 2px solid white;
+  color:white;
+}
+nav .main_nav>a{
+  width: 10vw;
+  height: 40px;
+  display: inline-block;
+  position: absolute;
+  top:0;
+  right: 0;
+  text-align: center;
+  overflow: hidden;
+}
+nav a span{
+  width: 24px;
+  height: 24px;
+  display: inline-block;
+  background: url("../images/nav-arr.png") no-repeat;
+  background-size: 48px;
+  margin: 8px 0;
+}
+nav .main_nav a span{
+  background-position: -24px -24px;
+}
+nav .main_nav p{
+  width: 25px;
+  height: 38px;
+  margin: 0;
+  position: absolute;
+}
+nav .main_nav .colchange1{
+  top:0;
+  left: 16px;
+  background-image: linear-gradient(to right,#3e98f0,rgba(62,152,240,0));
+  display: none;
+}
+nav .main_nav .colchange2{
+  top:0;
+  right: 10vw;
+  background-image: linear-gradient(to left,#3e98f0,rgba(62,152,240,0));
+}
+
+
+nav .hid_nav{
+  background-color: #3e98f0;
+  position: absolute;
+  top:0;
+  z-index: 10;
+  display: none;
+}
+nav .hid_nav h4{
+  height: 39px;
+  margin: 0;
+  padding: 0 23px;
+  line-height: 39px;
+  font-size: 0.14rem;
+  color: #cce7fd;
+  font-weight: 500;
+  border-bottom:  1px solid #5ba7eb;
+}
+nav .hid_nav>a{
+  width: 10vw;
+  height: 39px;
+  display: inline-block;
+  position: absolute;
+  top:0;
+  right: 0;
+  text-align: center;
+  overflow: hidden;
+}
+nav .hid_nav a span{
+  background-position: 0 -24px;
+}
+nav .hid_nav ul{
+  background: url("../images/webbg_46aa018.png") repeat;
+  background-size: 10px;
+  list-style: none;
+  margin: 0 1.5%;
+  padding: 0;
+  font-size: 0;
+}
+nav .hid_nav ul li{
+  display: inline-block;
+  width: 16.6666667%;
+  height: 40px;
+  text-align: center;
+  font-size: 0.16rem;
+  line-height: 40px;
+}
+nav .hid_nav ul .wid{
+  width: 33.33333%;
+}
+nav .hid_nav ul li a{
+  height: 38px;
+  padding: 0 4px;
+  display: inline-block;
+  border-bottom: 2px solid transparent;
+}
+nav .hid_nav ul li:first-child a{
+  border-bottom: 2px solid white;
+  color: white;
+}
+nav .hid_nav p{
+  margin: 0;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  font-weight: 600;
+}
+nav .hid_nav p a{
+  width: 100%;
+  height: 40px;
+  display: inline-block;
+  color: white;
+}
+
+.bg{
+  width: 100%;
+  height: 100%;
+  background-color: rgba(74, 72, 75, 0.37);
+  position: absolute;
+  top:0;
+  z-index: 8;
+  display: none;
+}
+
+
+
+.content{
+  height: auto;
+  padding-top: 91px;
+}
+.content a{
+  color: #333;
+  text-decoration: none;
+}
+.content .news{
+  margin: 0 16px;
+  padding: 13px 0;
+  overflow: hidden;
+}
+.content .news figure{
+  width: 33.33%;
+  height: auto;
+  margin: 0;
+  float: left;
+  text-align: center;
+  overflow: hidden;
+  vertical-align: middle;
+}
+.content .news figure img{
+  width: 100%;
+  vertical-align: middle;
+}
+.content .news section{
+  width: 66.66%;
+  float: left;
+  padding-left: 14px;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+.content .news h3{
+  font-size: 0.18rem;
+  font-weight: 500;
+  margin: 0;
+}
+.content .news h6{
+  display: none;
+}
+.content .news p{
+  margin: 4px 0 1px;
+  font-size: 0.13rem;
+}
+.content .news p span{
+  display: inline-block;
+  margin-right: 8px;
+}
+.content .news p span:first-child{
+  letter-spacing: -1px;
+  color: #999;
+}
+.content .news p span:last-child{
+  color: red;
+  border: 1px solid #efb9b9;
+  border-radius: 2px;
+}
+.content .news::after{
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.news .wr{
+  width: 100% !important;
+  padding: 0 !important;
+}
+.wr figure{
+  width: 100% !important;
+  float: none !important;
+  margin: 2px 0 8px !important;
+}
+.wr figure img{
+  width: 33% !important;
+  margin: 0.15% !important;
+
+}
+
+.container{
+  padding: 30px 17px;
+  color: #333;
+  background-color: #f5f5f5;
+}
+.container h2{
+  font-size: 0.24rem;
+  font-weight: 700;
+}
+.container p span{
+  font-size: 0.14rem;
+  color: #999;
+}
+.container p span:last-child{
+  display: inline-block;
+  letter-spacing: -1px;
+  padding-left: 10px;
+}
+.container figure{
+  width: 100%;
+  margin: 30px 0 0;
+  overflow: hidden;
+}
+.container figure img{
+  width: 100%;
+}
+.container p{
+  font-size: 0.18rem;
+  margin: 12px 0 0;
+  text-align: justify;
+}
+.container p:last-child{
+  margin-bottom: 200px;
+}
+
+
+.page .back{
+  width: 52px;
+  height: 52px;
+  border-radius: 26px;
+  background: url("../images/go-top.png") no-repeat center;
+  background-size: 52px;
+  overflow: hidden;
+  position: fixed;
+  right: 10px;
+  top:70vh;
+  display: none;
+}
+.page .back a{
+  width: 52px;
+  height: 52px;
+  display: block;
+  border-radius: 26px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

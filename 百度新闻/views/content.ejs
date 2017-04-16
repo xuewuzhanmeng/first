@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title><%=list.title%></title>
+    <meta name="viewport"  content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/normalize.css"/>
+    <link rel='stylesheet' href='/stylesheets/style.css'/>
+</head>
+<body>
+    <section class="container">
+        <h2><%=list.title%></h2>
+        <p><span><%=list.source%></span><span><%=list.date%></span></p>
+        <figure>
+            <img src='<%=list.conimg%>' alt="photo"/>
+        </figure>
+        <% var arr=list.content.split("\n"); %>
+        <% var len=arr.length; %>
+        <% for(var i=0; i<len; i++){ %>
+            <p><%=arr[i]%></p>
+        <% } %>
+    </section>
+
+</body>
+</html>

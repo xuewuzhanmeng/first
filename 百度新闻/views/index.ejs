@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <meta charset="UTF-8">
+      <title>百度新闻</title>
+      <meta name="viewport"  content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+      <link rel="stylesheet" type="text/css" href="./stylesheets/normalize.css"/>
+      <link rel='stylesheet' href='./stylesheets/style.css'/>
+  </head>
+  <body>
+      <section class="page">
+          <section class="top">
+              <!--头部-->
+              <header>
+                  <a href="#"><span></span></a>
+                  <a href="#"><span></span></a>
+                  <a href="#"><span></span></a>
+                  <a href="#"><span></span></a>
+              </header>
+              <nav>
+                  <!--导航栏-->
+                  <section class="main_nav">
+                      <p class="colchange1"></p>
+                      <ul>
+                          <li><a href="/news/精选">精选</a></li>
+                          <li><a href="/news/百家">百家</a></li>
+                          <li><a href="/news/本地">本地</a></li>
+                          <li><a href="/news/娱乐">娱乐</a></li>
+                          <li><a href="/news/社会">社会</a></li>
+                          <li><a href="/news/军事">军事</a></li>
+                          <li><a href="/news/女人">女人</a></li>
+                          <li><a href="/news/搞笑">搞笑</a></li>
+                          <li><a href="/news/互联网">互联网</a></li>
+                          <li><a href="/news/科技">科技</a></li>
+                          <li><a href="/news/生活">生活</a></li>
+                          <li><a href="/news/国际">国际</a></li>
+                          <li><a href="/news/国内">国内</a></li>
+                          <li><a href="/news/体育">体育</a></li>
+                          <li><a href="/news/汽车">汽车</a></li>
+                          <li><a href="/news/财经">财经</a></li>
+                          <li><a href="/news/房产">房产</a></li>
+                          <li><a href="/news/时尚">时尚</a></li>
+                          <li><a href="/news/教育">教育</a></li>
+                          <li><a href="/news/游戏">游戏</a></li>
+                          <li><a href="/news/旅游">旅游</a></li>
+                          <li><a href="/news/人文">人文</a></li>
+                          <li><a href="/news/创意">创意</a></li>
+                      </ul>
+                      <p class="colchange2"></p>
+                      <a href="#"><span></span></a>
+                  </section>
+                  <!--隐藏导航栏-->
+                  <section class="hid_nav">
+                      <h4>切换栏目</h4>
+                      <a href="#"><span></span></a>
+                      <ul>
+                          <li><a href="/news/精选">精选</a></li>
+                          <li><a href="/news/百家">百家</a></li>
+                          <li><a href="/news/本地">本地</a></li>
+                          <li><a href="/news/娱乐">娱乐</a></li>
+                          <li><a href="/news/社会">社会</a></li>
+                          <li><a href="/news/军事">军事</a></li>
+                          <li><a href="/news/女人">女人</a></li>
+                          <li><a href="/news/搞笑">搞笑</a></li>
+                          <li class="wid"><a href="/news/互联网">互联网</a></li>
+                          <li><a href="/news/科技">科技</a></li>
+                          <li><a href="/news/生活">生活</a></li>
+                          <li><a href="/news/国际">国际</a></li>
+                          <li><a href="/news/国内">国内</a></li>
+                          <li><a href="/news/体育">体育</a></li>
+                          <li><a href="/news/汽车">汽车</a></li>
+                          <li><a href="/news/财经">财经</a></li>
+                          <li><a href="/news/房产">房产</a></li>
+                          <li><a href="/news/时尚">时尚</a></li>
+                          <li><a href="/news/教育">教育</a></li>
+                          <li><a href="/news/游戏">游戏</a></li>
+                          <li><a href="/news/旅游">旅游</a></li>
+                          <li><a href="/news/人文">人文</a></li>
+                          <li><a href="/news/创意">创意</a></li>
+                      </ul>
+                      <p><a href="#">删除及排序</a></p>
+                  </section>
+
+              </nav>
+          </section>
+          <section class="bg"></section>
+          <a name="ccc"></a>
+          <!--新闻列表-->
+          <section class="content">
+          </section>
+          <!--回到顶部-->
+          <section class="back"><a href="#ccc"></a></section>
+      </section>
+      <script src="./javascripts/jquery-3.1.1.js"></script>
+      <script>
+          //导航栏左边渐变快的隐现
+          $(function () {
+              $(".main_nav ul").on('scroll',function () {
+                  var scro=$(".main_nav ul").scrollLeft();
+                  $("#one").html(scro);
+                  if(scro>2){
+                      $(".main_nav .colchange1").css({"display":"block"});
+                  }else {
+                      $(".main_nav .colchange1").css({"display":"none"});
+                  }
+              })
+
+
+              $(".page").on('scroll',function () {
+                  var len=$(this)[0].scrollHeight-$(this)[0].scrollTop-$(this)[0].clientHeight;
+                  var hei=$(this)[0].scrollTop;
+                  //回到顶部按钮的隐现
+                  if(hei>300){
+                      $(".back").css({"display":"block"});
+                  }else {
+                      $(".back").css({"display":"none"});
+                  }
+                   //滚动加载
+                  if(len<=0){
+                      $.ajax({
+                          url:'/downnews',
+                          type:'get',
+                          success:function (data) {
+                              $.each(data,function (index,element) {
+                                  getNews(element);
+                              })
+                          },
+                          error:function (err) {
+                              console.log(err);
+                          }
+                      })
+                  }
+              })
+
+
+              //隐藏导航的隐现
+              $(".main_nav>a").click(function () {
+                  $(".hid_nav").css({"display":"block"});
+                  $(".bg").css({"display":"block"});
+                  return false;
+              })
+              $(".hid_nav>a,.bg,.hid_nav ul li a").click(function () {
+                  $(".hid_nav").css({"display":"none"});
+                  $(".bg").css({"display":"none"});
+                  return false;
+              })
+
+
+              //获得新闻列表
+              $.ajax({
+                  url:'/getnews',
+                  type:'get',
+                  success:function (data) {
+                      $.each(data,function (index,element) {
+                          getNews(element);
+                      })
+                  },
+                  error:function (err) {
+                      console.log(err)
+                  }
+              })
+
+              //点击导航栏子标题，动态加载新闻列表
+              var con="";
+              $("nav ul li a").click(function () {
+                  var num=$(this).parent().index();
+                  if(num==con){
+                      //如果一个子标题连续点击，不会刷新
+                      return false;
+                  }else {
+                      con=num;
+                  }
+                  $(".main_nav ul li a").css({"border-bottom":"2px solid transparent","color":"#cce7fd"});
+                  $(".hid_nav ul li a").css({"border-bottom":"2px solid transparent","color":"#cce7fd"});
+                  $(".main_nav ul li:eq("+num+") a").css({"border-bottom":"2px solid white","color":"white"});
+                  $(".hid_nav ul li:eq("+num+") a").css({"border-bottom":"2px solid white","color":"white"});
+
+
+                  $('.content').empty();
+                  var u=$(this).attr('href');  //获得href链接
+                  $.ajax({
+                      url:u,
+                      type:'get',
+                      success:function (data) {
+                          $.each(data,function (index,element) {
+                              getNews(element);
+                          })
+                      },
+                      error:function (err) {
+                          console.log(err)
+                      }
+                  })
+                  return false; //防止链接跳转
+              })
+
+
+
+              var long=$(".main_nav ul")[0].scrollWidth;
+              var len=$(".hid_nav ul li").length;
+              var rel=0;
+              //获得导航栏li的总长度
+              for(var j=0;j<len;j++){
+                  var wid1=$(".main_nav ul li:eq("+j+")").width()+32;
+                  rel+=wid1;
+              }
+              $(".hid_nav ul li a").click(function () {
+                  var num=$(this).parent().index();
+                  var res=0;
+                  if(num>2 && num<len){
+                      for(var i=3;i<=num;i++){
+                          var wid2=$(".main_nav ul li:eq("+i+")").width()+32;
+                          res+=wid2;
+                      }
+                      var left=(long/(rel-16))*(res-16);
+                      $(".main_nav ul").scrollLeft(left);
+                  }else {
+                      $(".main_nav ul").scrollLeft(0);
+                  }
+              })
+
+          })
+
+          //动态创建新闻列表函数
+          function getNews(ele) {
+              var imurl = ele.imurl;
+              var title=ele.title;
+              var date=ele.date;
+              var source=ele.source;
+              var num=ele.id;
+              if(imurl.indexOf(",")==-1){
+                  var ima=[imurl];
+              }else {
+                  var ima=imurl.split(',')
+              }
+
+              var fig=$('<figure></figure>');
+              var len=ima.length;
+              for(var j=0;j<len;j++){
+                  var im=$('<img src='+ima[j]+' alt="photo"/>');
+                  im.appendTo(fig);
+              }
+
+              var tit=$("<h3>"+title+"</h3>");
+              var da=$("<span>"+date+"</span>");
+              var sou=$("<span>"+source+"</span>");
+              var par=$("<p></p>");
+              var wrap=$("<section class='news'></section>");
+              var hre=$("<a href='/newcon/"+num+"'></a>")
+              da.appendTo(par);
+              sou.appendTo(par);
+
+              if(len==1){  //如果图片只有一个链接
+                  var sec=$("<section></section>");
+                  tit.appendTo(sec);
+                  par.appendTo(sec);
+                  fig.appendTo(wrap);
+                  sec.appendTo(wrap);
+              }else if(len==3){  //如果三个图片链接
+                  var wr=$("<section class='wr'></section>");
+                  tit.appendTo(wr);
+                  fig.appendTo(wr);
+                  par.appendTo(wr);
+                  wr.appendTo(wrap);
+              }
+              wrap.appendTo(hre);
+              hre.appendTo($('.content'));
+          }
+      </script>
+  </body>
+</html>
